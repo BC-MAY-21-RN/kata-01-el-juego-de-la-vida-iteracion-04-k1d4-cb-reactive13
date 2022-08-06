@@ -1,20 +1,3 @@
-/*
-class NAME {
-    
-    Constructor (x,y)
-    -Variables-
-    this.variableName;
-    -Metodos-
-    metodo1 (){
-
-    }
-} 
-
-metodos 
-crear matriz
-imprimir matriz
-
-*/
 class Matriz {
   constructor(columns, rows) {
     this.columns = columns;
@@ -22,11 +5,6 @@ class Matriz {
     this.matriz = [];
   }
 
-  /*
-  for(let i=0; i<R; i++){
-      matrix[i]= new Array(C)
-  }
-   */
   // Creamos matriz de x, y
   crearMatriz() {
     for (let i = 0; i < this.rows; i++) {
@@ -35,14 +13,6 @@ class Matriz {
     return this.matriz;
   }
 
-  /*
-  for (let i = 0; i < matrix.length; i++) {
-  //console.log(matrix[i].length);
-  for(let j=0; j<matrix[i].length;j++){
-    matrix[i][j]='.'
-  }
-  }
-   */
   // Llenamos matriz de puntitos
   llenarMatriz() {
     for (let i = 0; i < this.rows; i++) {
@@ -52,27 +22,38 @@ class Matriz {
     }
     return this.matriz;
   }
-  /**
-* 
-for(let i=0; i<R; i++){
-  let line= '';
-  for (let j = 0; j < matrix[i].length; j++) {
-      line += matrix[i][j] + ' '; 
+
+  llenarMatrizDeCerosYUnos() {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.columns; j++) {
+        this.matriz[i][j] = Math.floor(Math.random() * 2);
+      }
+    }
+    return this.matriz;
   }
-  console.log(line);
-}
-}} matriz 
-*/
+
+  agregarCelulasAleatorias() {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.columns; j++) {
+        this.matriz[i][j] === 1
+          ? (this.matriz[i][j] = "*")
+          : (this.matriz[i][j] = ".");
+      }
+    }
+    return this.matriz;
+  }
+
   imprimirMatriz() {
     for (let i = 0; i < this.matriz.length; i++) {
       let line = "";
       for (let j = 0; j < this.matriz[i].length; j++) {
         line += this.matriz[i][j] + " ";
       }
-      // console.log(line);
+      console.log(line);
     }
     return "";
   }
+
   // coordenadas = [ [x,y] , [x,y] , [x,y]  ]
 
   fillLiveCells(cells) {
@@ -81,7 +62,7 @@ for(let i=0; i<R; i++){
     });
 
     this.imprimirMatriz();
-    return this.matriz
+    return this.matriz;
   }
 
   siguienteGeneracion() {

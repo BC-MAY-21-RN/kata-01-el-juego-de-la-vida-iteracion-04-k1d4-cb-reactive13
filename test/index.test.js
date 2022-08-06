@@ -1,4 +1,3 @@
-
 const Matrix = require("../models/matrix");
 let matriz = new Matrix(2, 2);
 
@@ -123,7 +122,7 @@ test("should insert 4 alive cells", () => {
     [1, 1],
     [2, 3],
     [2, 4],
-    [3, 3]
+    [3, 3],
   ];
   const COLUMNS = 8;
   const ROWS = 4;
@@ -140,4 +139,24 @@ test("should insert 4 alive cells", () => {
     }
   }
   expect(count).toBe(4);
+});
+
+test("should have almost one alive cell", () => {
+  const ROWS = 6;
+  const COLUMNS = 6;
+  let matriz = new Matrix(ROWS, COLUMNS);
+
+  matriz.crearMatriz();
+  matriz.llenarMatrizDeCerosYUnos();
+  const matrixFilled = matriz.agregarCelulasAleatorias();
+  let countAliveCells = 0;
+  for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < COLUMNS; j++) {
+      if (matrixFilled[i][j] == "*") {
+        countAliveCells++;
+      }
+    }
+  }
+
+  expect(countAliveCells > 0).toBe(true);
 });
