@@ -26,7 +26,7 @@ class Matriz {
 
   siguienteGeneracion(primeraGen) {
     // Generamos copia de la matriz, donde pondremos los nuevos valores de las celulas
-    let sigGen = primeraGen.map((arr) => [...arr]);
+    let sigGen = [...primeraGen]
     // Recorremos matriz original
     for (let i = 0; i < primeraGen.length; i++) {
       for (let j = 0; j < primeraGen[i].length; j++) {
