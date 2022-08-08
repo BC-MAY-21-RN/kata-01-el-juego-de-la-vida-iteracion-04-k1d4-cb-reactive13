@@ -24,50 +24,67 @@ class Matriz {
     return this.matriz;
   }
 
-  siguienteGeneracion() {
+  siguienteGeneracion(primeraGen) {
     // Generamos copia de la matriz, donde pondremos los nuevos valores de las celulas
-    let nextGen = this.matriz.map((arr) => [...arr]);
+    let sigGen = primeraGen.map((arr) => [...arr]);
     // Recorremos matriz original
-    for (let i = 0; i < this.matriz; i++) {
-      for (let j = 0; j < this.matriz[i]; j++) {
+    for (let i = 0; i < primeraGen.length; i++) {
+      for (let j = 0; j < primeraGen[i].length; j++) {
+        // Variable para aplicar los vecinos
+        let celula = primeraGen[i][j];
         // Creamos variable para contar vecinos
         let numDeVecinos = 0;
         // Recorremos los vecinos de la celula en cuestion
-        for (let x = -1; x < 2; x++) {
-          for (let y = -1; y < 2; y++) {
-            // Si llegamos a la posicion de la celula, la brincamos pues la celula no puede ser vecina de si misma
-            let vecinoX = i + x;
-            let vecinoY = j + y;
-            if (this.matriz[vecinoX][vecinoY] != undefined) {
-              if (this.matriz[vecinoX][vecinoY] === "*") {
+        for (let row = -1; row < 2; row++) {
+          for (let col = -1; col < 2; col++) {
+            if (row === 0 && col === 0) {
+              continue;
+            }
+            let vecinoX = i + row;
+            let vecinoY = j + col;
+
+            if (
+              vecinoX >= 0 &&
+              vecinoY >= 0 &&
+              vecinoX < primeraGen.length &&
+              vecinoY < primeraGen[i].length
+            ) {
+              if (primeraGen[vecinoX][vecinoY] === "*") {
                 numDeVecinos++;
               }
             }
           }
         }
-
-        // fuera del ciclo para contar vecinos, dentro del ciclo de la matriz
         /* Cuando salimos del ciclo de conteo de vecinos, tenemos el numero de vecinos
         para la celula en posicion [i][j]
         es aqui cuando aplicamos las reglas de la vida
         */
-        if (this.matriz[i][j] === "*" && numDeVecinos < 2) {
-          nextGen[i][j] = ".";
-        } else if (this.matriz[i][j] === "*" && numDeVecinos > 3) {
-          nextGen[i][j] = ".";
-        } else if (this.matriz[i][j] === "." && numDeVecinos === 3) {
-          nextGen[i][j] = "*";
+        if (celula === "*" && numDeVecinos < 2) {
+          sigGen[i][j] = ".";
+        } else if (celula === "*" && numDeVecinos > 3) {
+          sigGen[i][j] = ".";
+        } else if (celula === "." && numDeVecinos === 3) {
+          sigGen[i][j] = "*";
         }
       }
     }
-    return nextGen;
+    return sigGen;
   }
 
-  imprimirMatriz() {
-    for (let i = 0; i < this.matriz.length; i++) {
+  imprimirVariasGeneraciones(numeroDeGeneraciones, generacion) {
+    for (let i = 0; i <= numeroDeGeneraciones; i++) {
+      console.log("Generacion: " + i);
+      this.imprimirMatriz(generacion);
+      generacion = this.siguienteGeneracion(generacion);
+      console.log("--------------------");
+    }
+  }
+
+  imprimirMatriz(matriz) {
+    for (let i = 0; i < matriz.length; i++) {
       let line = "";
-      for (let j = 0; j < this.matriz[i].length; j++) {
-        line += this.matriz[i][j] + " ";
+      for (let j = 0; j < matriz[i].length; j++) {
+        line += matriz[i][j] + " ";
       }
       console.log(line);
     }

@@ -9,7 +9,7 @@ test('Debe de retornar una matriz de dos dimensiones', () =>{
     expect(matrizCreada).toBeDefined();
 });
 
-test('La matriz debe de tener valores adentro', () =>{
+test('La matriz no debe de estar vacia', () =>{
    for(let i = 0; i < matrizLlenada.length;i++){
        for(let j = 0; j < matrizLlenada[i].length;j++){
         expect(matrizLlenada[i][j]).toBeDefined(); 
