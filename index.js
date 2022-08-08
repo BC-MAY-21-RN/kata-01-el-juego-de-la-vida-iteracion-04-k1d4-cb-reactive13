@@ -22,4 +22,4 @@ Pasos para correr esta cosa
 let matriz = new Matriz(8,8); // Paso 1
 matriz.crearMatriz(); // Paso 2
 let primerGen = matriz.llenarMatriz(); // Paso 3
-matriz.imprimirVariasGeneraciones(5, primerGen); // Paso 4B.
+matriz.imprimirVariasGeneraciones(8, primerGen); // Paso 4B.
