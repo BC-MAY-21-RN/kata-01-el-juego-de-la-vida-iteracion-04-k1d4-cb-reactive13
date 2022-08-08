@@ -37,18 +37,15 @@ class Matriz {
         // Recorremos los vecinos de la celula en cuestion
         for (let row = -1; row < 2; row++) {
           for (let col = -1; col < 2; col++) {
+            // Si estamos sobre la celula de la que queremos contar los vecinos, la brincamos.
             if (row === 0 && col === 0) {
               continue;
             }
+            // Definimos variables para la posicion del vecino
             let vecinoX = i + row;
             let vecinoY = j + col;
-
-            if (
-              vecinoX >= 0 &&
-              vecinoY >= 0 &&
-              vecinoX < primeraGen.length &&
-              vecinoY < primeraGen[i].length
-            ) {
+            // Si estamos fuera de la matriz no entramos al if. 
+            if ( vecinoX >= 0 && vecinoY >= 0 && vecinoX < primeraGen.length && vecinoY < primeraGen[i].length) {
               if (primeraGen[vecinoX][vecinoY] === "*") {
                 numDeVecinos++;
               }
