@@ -45,17 +45,11 @@ class Matriz {
             let vecinoX = i + row;
             let vecinoY = j + col;
             // Si estamos fuera de la matriz no entramos al if.
-            if (vecinoX >= 0) {
-              if(vecinoY >= 0){
-                if(vecinoX < primeraGen.length ){
-                  if(vecinoY < primeraGen[i].length){
+            if ( (vecinoX >= 0 && vecinoY >= 0 &&) && (vecinoX < primeraGen.length && vecinoY < primeraGen[i].length)) {
                     if (primeraGen[vecinoX][vecinoY] === "*") {
                       numDeVecinos++;
                     }
                   }
-                }
-              }
-            }
           }
         }
         /* Cuando salimos del ciclo de conteo de vecinos, tenemos el numero de vecinos
