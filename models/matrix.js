@@ -38,7 +38,7 @@ class Matriz {
         for (let row = -1; row < 2; row++) {
           for (let col = -1; col < 2; col++) {
             // Si estamos sobre la celula de la que queremos contar los vecinos, la brincamos.
-            if (primeraGen[row][col] == 0) {
+            if (primeraGen[row][col] == primeraGen[i][j]) {
               continue;
             }
             // Definimos variables para la posicion del vecino
