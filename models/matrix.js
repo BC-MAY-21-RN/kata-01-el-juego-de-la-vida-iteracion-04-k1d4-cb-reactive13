@@ -23,10 +23,20 @@ class Matriz {
     }
     return this.matriz;
   }
+  contarVecinos(primeraGen) {
+    // Recorrer la matriz original
+    let numeroDeVecinos = 0;
+    for (let i = 0; i < primeraGen.length; i++) {
+      for (let j = 0; j < primeraGen[i].length; j++) {
 
+
+        
+      }
+    }
+  }
   siguienteGeneracion(primeraGen) {
     // Generamos copia de la matriz, donde pondremos los nuevos valores de las celulas
-    let sigGen = [...primeraGen]
+    let sigGen = [...primeraGen];
     // Recorremos matriz original
     for (let i = 0; i < primeraGen.length; i++) {
       for (let j = 0; j < primeraGen[i].length; j++) {
@@ -46,10 +56,10 @@ class Matriz {
             let vecinoY = j + col;
             // Si estamos fuera de la matriz no entramos al if.
             if ( (vecinoX >= 0 && vecinoY >= 0) && (vecinoX < primeraGen.length && vecinoY < primeraGen[i].length)) {
-                    if (primeraGen[vecinoX][vecinoY] === "*") {
-                      numDeVecinos++;
-                    }
-                  }
+              if (primeraGen[vecinoX][vecinoY] === "*") {
+                numDeVecinos++;
+              }
+            }
           }
         }
         /* Cuando salimos del ciclo de conteo de vecinos, tenemos el numero de vecinos
